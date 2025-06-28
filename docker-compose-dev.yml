@@ -28,17 +28,19 @@ services:
       UNSOLICITED_IPPORT_PROBE_DRIVER: unset
       SKIP_ERTL: 1
   qr-service:
-    image: "chcniz/openspy-qr-service"
+    build: "./qr.service"
     hostname: "qr-service"
     restart: on-failure
     depends_on:
       - rabbit
+      - redis
     environment:
       RABBITMQ_URL: amqp://rabbitmq:rabbitmq@rabbit
       REDIS_URL: redis://redis:6379
       GEOIP_DB_PATH: /opt/GeoLite2-City.mmdb
     volumes:
       - ${PWD}/geoip/GeoLite2-City.mmdb:/opt/GeoLite2-City.mmdb
+    entrypoint: "sleep 30 && npm run start"
   gamestats-web:
     image: "chcniz/openspy-gamestats-web"
     hostname: "gamestats-web"
