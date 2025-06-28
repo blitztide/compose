@@ -7,6 +7,7 @@ Run it with `docker-compose -f docker-compose.yml up`
 
 ## Running a local dev environment
 
+Clone this repo by running the command `git clone --recursive https://github.com/openspy/compose`
 To run a local dev environment, ensure that you have downloaded the geoip database and placed it in the geoip folder, then run the command `docker compose -f docker-compose-dev.yml up`
 This will automatically create and build a full OpenSpy server for local development.
 
