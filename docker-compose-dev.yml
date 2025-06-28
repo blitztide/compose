@@ -16,7 +16,7 @@ services:
     volumes:
       - ./nginx-conf/default.conf:/etc/nginx/conf.d/default.conf
   natneg-helper:
-    image: "chcniz/openspy-natneg-helper"
+    build: "./natneg"
     hostname: "natneg-helper"
     restart: on-failure
     depends_on:
